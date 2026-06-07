@@ -48,6 +48,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#0066CC" />
+
+        <meta
+  name="google-site-verification"
+  content="u42OJTL8ipnXGCgVCd7i_3JuE861LrOyBbtpEIQNF7s"
+/>
       </head>
       <body className="min-h-screen flex flex-col font-sans">
         <Header />
