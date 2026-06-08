@@ -26,6 +26,7 @@ export function EmiCalculatorClient({ meta }: Props) {
     totalPayment: number;
     totalInterest: number;
   } | null>(null);
+  const [shareRows, setShareRows] = useState<{ label: string; value: string }[]>([]);
 
   const calculate = () => {
     const P = parseFloat(principal);
@@ -45,7 +46,7 @@ export function EmiCalculatorClient({ meta }: Props) {
   };
 
   return (
-    <CalculatorLayout meta={meta}>
+    <CalculatorLayout meta={meta} results={shareRows}>
       <div className="flex items-center justify-between mb-4">
         <span className="text-sm text-muted-foreground">Currency</span>
         <CurrencySelector />
@@ -117,6 +118,7 @@ export function EmiCalculatorClient({ meta }: Props) {
               value: formatCurrency(parseFloat(principal), currency),
             },
           ]}
+          onResultsReady={(rows) => setShareRows(rows.map(r => ({ label: r.label, value: String(r.value) })))}
         />
       )}
     </CalculatorLayout>
