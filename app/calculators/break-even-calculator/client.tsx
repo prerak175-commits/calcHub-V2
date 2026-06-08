@@ -26,6 +26,7 @@ export function BreakEvenClient({ meta }: Props) {
     contributionPerUnit: number;
     contributionRatio: number;
   } | null>(null);
+  const [shareRows, setShareRows] = useState<{ label: string; value: string }[]>([]);
 
   const calculate = () => {
     const fc = parseFloat(fixedCosts);
@@ -44,7 +45,7 @@ export function BreakEvenClient({ meta }: Props) {
   };
 
   return (
-    <CalculatorLayout meta={meta}>
+    <CalculatorLayout meta={meta} results={shareRows}>
       <div className="flex items-center justify-between mb-4">
         <span className="text-sm text-muted-foreground">Currency</span>
         <CurrencySelector />
@@ -95,6 +96,7 @@ export function BreakEvenClient({ meta }: Props) {
             { label: 'Contribution per Unit', value: formatCurrency(result.contributionPerUnit, currency) },
             { label: 'Contribution Margin Ratio', value: `${formatNumber(result.contributionRatio * 100)}%`, highlight: true },
           ]}
+          onResultsReady={(rows) => setShareRows(rows.map(r => ({ label: r.label, value: String(r.value) })))}
         />
       )}
     </CalculatorLayout>
