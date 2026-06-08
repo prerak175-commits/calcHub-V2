@@ -29,6 +29,7 @@ export function ProfitMarginClient({ meta }: Props) {
     netProfit: number;
     netMargin: number;
   } | null>(null);
+  const [shareRows, setShareRows] = useState<{ label: string; value: string }[]>([]);
 
   const calculate = () => {
     const rev = parseFloat(revenue);
@@ -49,7 +50,7 @@ export function ProfitMarginClient({ meta }: Props) {
   };
 
   return (
-    <CalculatorLayout meta={meta}>
+    <CalculatorLayout meta={meta} results={shareRows}>
       <div className="flex items-center justify-between mb-4">
         <span className="text-sm text-muted-foreground">Currency</span>
         <CurrencySelector />
@@ -108,6 +109,7 @@ export function ProfitMarginClient({ meta }: Props) {
             { label: 'Net Profit', value: formatCurrency(result.netProfit, currency) },
             { label: 'Net Margin', value: `${formatNumber(result.netMargin)}%`, size: 'lg' },
           ]}
+          onResultsReady={(rows) => setShareRows(rows.map(r => ({ label: r.label, value: String(r.value) })))}
         />
       )}
     </CalculatorLayout>
