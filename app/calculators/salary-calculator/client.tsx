@@ -22,6 +22,7 @@ export function SalaryClient({ meta }: Props) {
   const [hoursPerWeek, setHoursPerWeek] = useState('40');
   const [daysPerWeek, setDaysPerWeek] = useState('5');
   const [result, setResult] = useState<Record<string, number> | null>(null);
+  const [shareRows, setShareRows] = useState<{ label: string; value: string }[]>([]);
 
   const calculate = () => {
     const val = parseFloat(amount);
@@ -62,7 +63,7 @@ export function SalaryClient({ meta }: Props) {
   };
 
   return (
-    <CalculatorLayout meta={meta}>
+    <CalculatorLayout meta={meta} results={shareRows}>
       <div className="flex items-center justify-between mb-4">
         <span className="text-sm text-muted-foreground">Currency</span>
         <CurrencySelector />
@@ -133,6 +134,7 @@ export function SalaryClient({ meta }: Props) {
             { label: 'Monthly', value: formatCurrency(result.monthly, currency), highlight: true },
             { label: 'Annual', value: formatCurrency(result.annual, currency), size: 'lg' },
           ]}
+          onResultsReady={(rows) => setShareRows(rows.map(r => ({ label: r.label, value: String(r.value) })))}
         />
       )}
     </CalculatorLayout>
