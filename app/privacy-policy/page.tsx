@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'CalcHub privacy policy - how we handle your data and protect your privacy.',
-  alternates: { canonical: 'https://calchub.com/privacy-policy' },
+  alternates: { canonical: 'https://calc-hub-v2.vercel.app/privacy-policy' },
 };
 
 export default function PrivacyPolicyPage() {
