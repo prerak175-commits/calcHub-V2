@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Zap, Globe, CheckCircle2, Users, Clock, Eye } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About CalcHub',
@@ -8,32 +8,41 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://calc-hub-v2.vercel.app/about' },
 };
 
+const values = [
+  { icon: Zap, title: 'Speed First', desc: 'No spinners, no loading screens. Results appear the moment you click calculate.' },
+  { icon: Eye, title: 'Formula Transparency', desc: 'Every calculator shows its formula, worked examples, and FAQ so you can verify results yourself.' },
+  { icon: Globe, title: 'Global Currency', desc: 'Switch between USD, EUR, INR, and CAD with a single click. Built for an international audience.' },
+  { icon: ShieldCheck, title: 'Privacy by Design', desc: 'Calculations run entirely in your browser. We never store or transmit your financial data.' },
+  { icon: CheckCircle2, title: 'Accuracy', desc: 'Industry-standard formulas verified against published financial methods with worked examples.' },
+  { icon: Users, title: 'Open & Free', desc: 'No paywalls, no sign-ups. Every tool is free for personal and commercial use.' },
+];
+
 export default function AboutPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
       <div className="max-w-3xl">
         <h1 className="text-3xl font-bold tracking-tight mb-4">About CalcHub</h1>
         <div className="space-y-6 text-muted-foreground leading-relaxed">
-          <p>
+          <p className="text-base">
             CalcHub is a free, open calculator platform built for professionals, entrepreneurs, and anyone who needs fast, accurate calculations. We believe calculation tools should be instant, reliable, and beautifully simple.
           </p>
           <p>
             Every calculator on CalcHub uses industry-standard formulas, tested for accuracy and presented with clear explanations so you understand not just the result, but the reasoning behind it.
           </p>
 
-          <div className="grid sm:grid-cols-3 gap-6 my-8">
-            <div className="bg-secondary/30 rounded-xl p-5 border border-border/50">
-              <h3 className="text-sm font-semibold text-foreground mb-2">Speed First</h3>
-              <p className="text-xs leading-relaxed">No spinners, no loading screens. Results appear the moment you click calculate.</p>
-            </div>
-            <div className="bg-secondary/30 rounded-xl p-5 border border-border/50">
-              <h3 className="text-sm font-semibold text-foreground mb-2">Formula Transparency</h3>
-              <p className="text-xs leading-relaxed">Every calculator shows its formula, worked examples, and FAQ so you can verify results yourself.</p>
-            </div>
-            <div className="bg-secondary/30 rounded-xl p-5 border border-border/50">
-              <h3 className="text-sm font-semibold text-foreground mb-2">Global Currency</h3>
-              <p className="text-xs leading-relaxed">Switch between USD, EUR, INR, and CAD with a single click. Built for an international audience.</p>
-            </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
+            {values.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.title} className="bg-card rounded-xl border border-border/50 p-5 hover:border-primary/15 transition-colors">
+                  <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
+                    <Icon className="w-4 h-4 text-primary" />
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground mb-1.5">{item.title}</h3>
+                  <p className="text-xs leading-relaxed">{item.desc}</p>
+                </div>
+              );
+            })}
           </div>
 
           <h2 className="text-xl font-semibold text-foreground pt-4">Our Mission</h2>
@@ -45,6 +54,13 @@ export default function AboutPage() {
           <p>
             All CalcHub calculators use verified, industry-standard formulas. Each calculator includes a worked example so you can cross-check our math. If you ever find an error, please contact us and we will fix it immediately.
           </p>
+
+          <div className="bg-warning/5 border border-warning/20 rounded-xl p-4 flex items-start gap-3 my-6">
+            <Clock className="w-4 h-4 text-warning shrink-0 mt-0.5" />
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              CalcHub provides results for informational purposes only. It does not constitute financial, investment, or professional advice. Always verify important decisions with a qualified professional. See our <Link href="/disclaimer" className="text-primary hover:underline">disclaimer</Link> for details.
+            </p>
+          </div>
 
           <div className="pt-4">
             <Link
