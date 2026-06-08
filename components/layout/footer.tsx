@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Calculator } from 'lucide-react';
+import { Logo } from '@/components/brand/logo';
 
 const footerLinks = {
   Calculators: [
@@ -21,24 +21,55 @@ const footerLinks = {
     { href: '/contact', label: 'Contact' },
     { href: '/privacy-policy', label: 'Privacy Policy' },
     { href: '/terms-of-service', label: 'Terms of Service' },
+    { href: '/disclaimer', label: 'Disclaimer' },
   ],
 };
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/50 bg-secondary/30">
+    <footer className="border-t border-border/50 bg-secondary/30 dark:bg-secondary/10">
+      {/* Newsletter Section */}
+      <div className="border-b border-border/30">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <h3 className="text-sm font-semibold mb-1">Stay updated</h3>
+              <p className="text-xs text-muted-foreground">New calculators and financial insights. No spam, ever.</p>
+            </div>
+            <form className="flex w-full sm:w-auto gap-2" action="#">
+              <input
+                type="email"
+                placeholder="you@example.com"
+                required
+                className="flex h-9 w-full sm:w-56 rounded-lg border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                aria-label="Email for newsletter"
+              />
+              <button
+                type="submit"
+                className="h-9 px-4 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors shrink-0"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <Calculator className="w-4 h-4 text-primary-foreground" />
-              </div>
-              <span className="text-lg font-semibold tracking-tight">CalcHub</span>
+            <Link href="/" className="mb-4 inline-block">
+              <Logo />
             </Link>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed mt-3">
               Fast, reliable calculators for finance, investing, business, and supply chain professionals worldwide.
             </p>
+            <div className="flex items-center gap-3 mt-4">
+              <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <div className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
+                All systems operational
+              </div>
+            </div>
           </div>
 
           {Object.entries(footerLinks).map(([title, links]) => (
@@ -60,13 +91,19 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-10 pt-6 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} CalcHub. All rights reserved.
-          </p>
-          <p className="text-xs text-muted-foreground">
-            Built for speed. Designed for clarity.
-          </p>
+        <div className="mt-10 pt-6 border-t border-border/30">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-xs text-muted-foreground">
+              &copy; {new Date().getFullYear()} CalcHub. All rights reserved.
+            </p>
+            <div className="flex items-center gap-4 text-xs text-muted-foreground">
+              <span>Built for speed</span>
+              <span className="w-1 h-1 rounded-full bg-border" />
+              <span>Designed for clarity</span>
+              <span className="w-1 h-1 rounded-full bg-border" />
+              <span>Trusted by thousands</span>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
