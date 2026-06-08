@@ -35,6 +35,7 @@ export function StockAverageClient({ meta }: Props) {
     currentValue: number;
     profitLoss: number;
   } | null>(null);
+  const [shareRows, setShareRows] = useState<{ label: string; value: string }[]>([]);
 
   const addPurchase = () => {
     setPurchases([...purchases, { shares: '', price: '' }]);
@@ -75,7 +76,7 @@ export function StockAverageClient({ meta }: Props) {
   };
 
   return (
-    <CalculatorLayout meta={meta}>
+    <CalculatorLayout meta={meta} results={shareRows}>
       <div className="flex items-center justify-between mb-4">
         <span className="text-sm text-muted-foreground">Currency</span>
         <CurrencySelector />
@@ -143,6 +144,7 @@ export function StockAverageClient({ meta }: Props) {
               { label: 'Profit / Loss', value: formatCurrency(result.profitLoss, currency), highlight: result.profitLoss >= 0 },
             ] : []),
           ]}
+          onResultsReady={(rows) => setShareRows(rows.map(r => ({ label: r.label, value: String(r.value) })))}
         />
       )}
     </CalculatorLayout>
