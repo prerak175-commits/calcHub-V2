@@ -28,6 +28,7 @@ export function InventoryForecastClient({ meta }: Props) {
     totalNeeded: number;
     holdingCost: number;
   } | null>(null);
+  const [shareRows, setShareRows] = useState<{ label: string; value: string }[]>([]);
 
   const calculate = () => {
     const demand = parseFloat(avgDailyDemand);
@@ -47,7 +48,7 @@ export function InventoryForecastClient({ meta }: Props) {
   };
 
   return (
-    <CalculatorLayout meta={meta}>
+    <CalculatorLayout meta={meta} results={shareRows}>
       <div className="flex items-center justify-between mb-4">
         <span className="text-sm text-muted-foreground">Currency</span>
         <CurrencySelector />
@@ -115,6 +116,7 @@ export function InventoryForecastClient({ meta }: Props) {
               { label: 'Est. Annual Holding Cost', value: formatCurrency(result.holdingCost, currency) },
             ] : []),
           ]}
+          onResultsReady={(rows) => setShareRows(rows.map(r => ({ label: r.label, value: String(r.value) })))}
         />
       )}
     </CalculatorLayout>
