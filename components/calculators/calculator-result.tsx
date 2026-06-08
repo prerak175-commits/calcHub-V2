@@ -1,7 +1,6 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ReactNode } from 'react';
 
 interface ResultRow {
   label: string;
@@ -15,12 +14,17 @@ interface CalculatorResultProps {
   title?: string;
   rows: ResultRow[];
   variant?: 'simple' | 'detailed';
+  onResultsReady?: (rows: ResultRow[]) => void;
 }
 
-export function CalculatorResult({ title = 'Results', rows, variant = 'simple' }: CalculatorResultProps) {
+export function CalculatorResult({ title = 'Results', rows, variant = 'simple', onResultsReady }: CalculatorResultProps) {
+  if (onResultsReady && rows.length > 0) {
+    onResultsReady(rows);
+  }
+
   if (variant === 'simple') {
     return (
-      <div className="bg-primary/5 border border-primary/10 rounded-xl p-5 space-y-3">
+      <div className="bg-primary/5 dark:bg-primary/10 border border-primary/10 rounded-xl p-5 space-y-3 animate-fade-in">
         {rows.map((row, i) => (
           <div
             key={i}
@@ -49,7 +53,7 @@ export function CalculatorResult({ title = 'Results', rows, variant = 'simple' }
   }
 
   return (
-    <Card className="border-primary/20">
+    <Card className="border-primary/20 animate-fade-in">
       <CardHeader className="pb-3">
         <CardTitle className="text-lg">{title}</CardTitle>
       </CardHeader>
