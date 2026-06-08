@@ -29,6 +29,7 @@ export function SavingsGoalClient({ meta }: Props) {
     interestEarned: number;
     monthsNeeded: number;
   } | null>(null);
+  const [shareRows, setShareRows] = useState<{ label: string; value: string }[]>([]);
 
   const calculate = () => {
     const goal = parseFloat(goalAmount);
@@ -85,7 +86,7 @@ export function SavingsGoalClient({ meta }: Props) {
   };
 
   return (
-    <CalculatorLayout meta={meta}>
+    <CalculatorLayout meta={meta} results={shareRows}>
       <div className="flex items-center justify-between mb-4">
         <span className="text-sm text-muted-foreground">Currency</span>
         <CurrencySelector />
@@ -172,6 +173,7 @@ export function SavingsGoalClient({ meta }: Props) {
             { label: 'Total Deposited', value: formatCurrency(result.totalDeposited, currency) },
             { label: 'Interest Earned', value: formatCurrency(Math.max(result.interestEarned, 0), currency), highlight: true },
           ]}
+          onResultsReady={(rows) => setShareRows(rows.map(r => ({ label: r.label, value: String(r.value) })))}
         />
       )}
     </CalculatorLayout>
