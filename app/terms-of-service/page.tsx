@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Terms of Service',
   description: 'CalcHub terms of service - the rules and guidelines for using our calculator platform.',
-  alternates: { canonical: 'https://calchub.com/terms-of-service' },
+  alternates: { canonical: 'https://calc-hub-v2.vercel.app/terms-of-service' },
 };
 
 export default function TermsOfServicePage() {
