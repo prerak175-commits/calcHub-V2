@@ -17,11 +17,11 @@ export const metadata: Metadata = {
   authors: [{ name: 'CalcHub' }],
   creator: 'CalcHub',
   publisher: 'CalcHub',
-  metadataBase: new URL('https://calchub.com'),
+  metadataBase: new URL('https://calc-hub-v2.vercel.app'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://calchub.com',
+    url: 'https://calc-hub-v2.vercel.app',
     siteName: 'CalcHub',
     title: 'CalcHub - Fast, Reliable Financial Calculators',
     description: 'Free online calculators for finance, investing, business, and supply chain.',
@@ -44,15 +44,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        <link rel="canonical" href="https://calchub.com" />
+        <link rel="canonical" href="https://calc-hub-v2.vercel.app" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#0066CC" />
-
-        <meta
-  name="google-site-verification"
-  content="u42OJTL8ipnXGCgVCd7i_3JuE861LrOyBbtpEIQNF7s"
-/>
       </head>
       <body className="min-h-screen flex flex-col font-sans">
         <Header />
