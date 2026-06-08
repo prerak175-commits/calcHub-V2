@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://calchub.com';
+  const baseUrl = 'https://calc-hub-v2.vercel.app';
 
   const calculators = [
     'emi-calculator',
