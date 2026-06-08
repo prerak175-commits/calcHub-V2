@@ -5,8 +5,8 @@ import { CalculatorsClient } from './client';
 export const metadata: Metadata = {
   title: 'All Calculators',
   description: 'Browse all free online calculators for finance, investing, business, creator economy, and supply chain management.',
-  openGraph: { title: 'All Calculators | CalcHub', description: 'Browse all free online calculators.', url: 'https://calchub.com/calculators' },
-  alternates: { canonical: 'https://calchub.com/calculators' },
+  openGraph: { title: 'All Calculators | CalcHub', description: 'Browse all free online calculators.', url: 'https://calc-hub-v2.vercel.app/calculators' },
+  alternates: { canonical: 'https://calc-hub-v2.vercel.app/calculators' },
 };
 
 export default function CalculatorsPage() {
