@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'About CalcHub',
   description: 'Learn about CalcHub - the fast, reliable calculator platform for finance, investing, business, and supply chain professionals.',
-  alternates: { canonical: 'https://calchub.com/about' },
+  alternates: { canonical: 'https://calc-hub-v2.vercel.app/about' },
 };
 
 export default function AboutPage() {
