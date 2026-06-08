@@ -12,11 +12,11 @@ export function websiteJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'CalcHub',
-    url: 'https://calchub.com',
+    url: 'https://calc-hub-v2.vercel.app',
     description: 'Free online calculators for finance, investing, business, and supply chain.',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://calchub.com/calculators?q={search_term_string}',
+      target: 'https://calc-hub-v2.vercel.app/calculators?q={search_term_string}',
       'query-input': 'required name=search_term_string',
     },
   };
@@ -27,7 +27,7 @@ export function calculatorJsonLd(name: string, slug: string, description: string
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name,
-    url: `https://calchub.com/calculators/${slug}`,
+    url: `https://calc-hub-v2.vercel.app/calculators/${slug}`,
     description,
     applicationCategory: 'FinanceApplication',
     operatingSystem: 'Any',
