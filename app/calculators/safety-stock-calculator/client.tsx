@@ -35,6 +35,7 @@ export function SafetyStockClient({ meta }: Props) {
     safetyStock: number;
     reorderPoint: number;
   } | null>(null);
+  const [shareRows, setShareRows] = useState<{ label: string; value: string }[]>([]);
 
   const calculate = () => {
     if (method === 'standard') {
@@ -67,7 +68,7 @@ export function SafetyStockClient({ meta }: Props) {
   };
 
   return (
-    <CalculatorLayout meta={meta}>
+    <CalculatorLayout meta={meta} results={shareRows}>
       <div className="flex items-center justify-between mb-4">
         <span className="text-sm text-muted-foreground">Method</span>
         <div className="flex rounded-md border border-input overflow-hidden">
@@ -182,6 +183,7 @@ export function SafetyStockClient({ meta }: Props) {
             { label: 'Reorder Point', value: `${formatNumber(result.reorderPoint, 0)} units`, highlight: true },
             { label: 'Service Level', value: `${serviceLevel}%` },
           ]}
+          onResultsReady={(rows) => setShareRows(rows.map(r => ({ label: r.label, value: String(r.value) })))}
         />
       )}
     </CalculatorLayout>
