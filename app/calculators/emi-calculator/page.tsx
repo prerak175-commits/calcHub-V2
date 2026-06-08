@@ -8,9 +8,9 @@ const meta = getCalculatorBySlug('emi-calculator')!;
 export const metadata: Metadata = {
   title: `${meta.name} - Calculate Monthly Loan EMI`,
   description: meta.description,
-  openGraph: { title: meta.name, description: meta.description, url: `https://calchub.com/calculators/${meta.slug}` },
+  openGraph: { title: meta.name, description: meta.description, url: `https://calc-hub-v2.vercel.app/calculators/${meta.slug}` },
   twitter: { card: 'summary', title: meta.name, description: meta.description },
-  alternates: { canonical: `https://calchub.com/calculators/${meta.slug}` },
+  alternates: { canonical: `https://calc-hub-v2.vercel.app/calculators/${meta.slug}` },
 };
 
 export default function EmiCalculatorPage() {
