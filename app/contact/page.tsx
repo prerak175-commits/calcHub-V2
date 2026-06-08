@@ -4,7 +4,7 @@ import { ContactClient } from './client';
 export const metadata: Metadata = {
   title: 'Contact Us',
   description: 'Get in touch with CalcHub. Report errors, suggest calculators, or ask questions.',
-  alternates: { canonical: 'https://calchub.com/contact' },
+  alternates: { canonical: 'https://calc-hub-v2.vercel.app/contact' },
 };
 
 export default function ContactPage() {
