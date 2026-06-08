@@ -24,7 +24,7 @@ export const CalculatorInput = forwardRef<HTMLInputElement, CalculatorInputProps
         </Label>
         <div className="relative">
           {prefix && (
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm pointer-events-none">
               {prefix}
             </span>
           )}
@@ -32,22 +32,24 @@ export const CalculatorInput = forwardRef<HTMLInputElement, CalculatorInputProps
             ref={ref}
             id={inputId}
             className={cn(
-              'h-10',
+              'h-10 transition-colors',
               prefix && 'pl-8',
               suffix && 'pr-12',
-              error && 'border-destructive',
+              error && 'border-destructive focus-visible:ring-destructive',
               className
             )}
+            aria-describedby={hint ? `${inputId}-hint` : error ? `${inputId}-error` : undefined}
+            aria-invalid={!!error}
             {...props}
           />
           {suffix && (
-            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">
+            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm pointer-events-none">
               {suffix}
             </span>
           )}
         </div>
-        {hint && !error && <p className="text-xs text-muted-foreground">{hint}</p>}
-        {error && <p className="text-xs text-destructive">{error}</p>}
+        {hint && !error && <p id={`${inputId}-hint`} className="text-xs text-muted-foreground">{hint}</p>}
+        {error && <p id={`${inputId}-error`} className="text-xs text-destructive" role="alert">{error}</p>}
       </div>
     );
   }
