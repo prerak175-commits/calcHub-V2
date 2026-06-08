@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/'],
     },
-    sitemap: 'https://calchub.com/sitemap.xml',
+    sitemap: 'https://calc-hub-v2.vercel.app/sitemap.xml',
   };
 }
