@@ -25,6 +25,7 @@ export function RoiClient({ meta }: Props) {
     annualizedRoi: number;
     profit: number;
   } | null>(null);
+  const [shareRows, setShareRows] = useState<{ label: string; value: string }[]>([]);
 
   const calculate = () => {
     const initial = parseFloat(initialInvestment);
@@ -44,7 +45,7 @@ export function RoiClient({ meta }: Props) {
   };
 
   return (
-    <CalculatorLayout meta={meta}>
+    <CalculatorLayout meta={meta} results={shareRows}>
       <div className="flex items-center justify-between mb-4">
         <span className="text-sm text-muted-foreground">Currency</span>
         <CurrencySelector />
@@ -95,6 +96,7 @@ export function RoiClient({ meta }: Props) {
             { label: 'Initial Investment', value: formatCurrency(parseFloat(initialInvestment), currency) },
             { label: 'Final Value', value: formatCurrency(parseFloat(finalValue), currency) },
           ]}
+          onResultsReady={(rows) => setShareRows(rows.map(r => ({ label: r.label, value: String(r.value) })))}
         />
       )}
     </CalculatorLayout>
